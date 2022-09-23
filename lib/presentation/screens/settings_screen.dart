@@ -48,7 +48,7 @@ class SettingsScreenState extends State<SettingsScreen> {
                 'Überspringen',
                 style: TextStyle(
                   color: Colors.white,
-                )
+                ),
               ),
             ),
           ),

@@ -44,4 +44,8 @@ class StorageService {
       await prefs.remove('settings.phoneNumber');
     }
   }
+
+  Future<void> setInit(bool init) async {
+    await prefs.setBool('init', init);
+  }
 }
