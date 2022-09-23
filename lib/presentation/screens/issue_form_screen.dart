@@ -92,8 +92,10 @@ class IssueFormScreenState extends State<IssueFormScreen> {
   }
 
   void enableNext(bool enable) {
-    setState(() {
-      nextEnabled = true;
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      setState(() {
+        nextEnabled = true;
+      });
     });
   }
 }
