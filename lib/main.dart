@@ -1,7 +1,10 @@
 import 'package:fix_ms/routes.dart';
+import 'package:fix_ms/services/services_init.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  registerServices();
+
   runApp(const FixMSApp());
 }
 
@@ -17,6 +20,11 @@ class FixMSApp extends StatelessWidget {
         primaryColor: const Color(0xFFDA121A),
         backgroundColor: const Color(0xFFFCDD09),
         scaffoldBackgroundColor: const Color(0xFFFCDD09),
+        textTheme: ThemeData.light().textTheme.copyWith(
+          bodyMedium: const TextStyle(
+            fontSize: 16,
+          ),
+        )
       ),
       initialRoute: Routes.onboarding,
       onGenerateRoute: (settings) {

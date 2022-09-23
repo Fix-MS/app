@@ -69,7 +69,7 @@ class OnboardingScreen extends StatelessWidget {
                       padding: const EdgeInsets.only(bottom: 32),
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushNamed(Routes.home);
+                          Navigator.of(context).pushNamed(Routes.settings);
                         },
                         child: const Text(
                           'Los geht\'s!',
