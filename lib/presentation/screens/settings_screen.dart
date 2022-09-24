@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 class SettingsScreen extends StatefulWidget {
-
   const SettingsScreen({super.key});
 
   @override

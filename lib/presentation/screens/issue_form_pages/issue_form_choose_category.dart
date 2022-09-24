@@ -17,8 +17,8 @@ class IssueFormChooseCategory extends StatefulWidget {
 }
 
 class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
-  String? category;
-  String? subCategory;
+  String? category = 'Geh-/Radweg, Radverkehr';
+  String? subCategory = 'starke Verschmutzung/Scherben';
 
   @override
   Widget build(BuildContext context) {

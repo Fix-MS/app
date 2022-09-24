@@ -8,7 +8,6 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:get_it/get_it.dart';
 
 class ImprintScreen extends StatefulWidget {
-
   const ImprintScreen({super.key});
 
   @override
@@ -56,7 +55,8 @@ class ImprintScreenState extends State<ImprintScreen> {
             }
             return SingleChildScrollView(
               child: Html(
-                data: """<div class='impressum'><h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Felix Ulonska <br> Humboldtstraße 32<br> 
+                data:
+                    """<div class='impressum'><h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Felix Ulonska <br> Humboldtstraße 32<br> 
 53115 Bonn<br> 
 </p><p> <strong>Vertreten durch: </strong><br>
 Felix Ulonska<br>

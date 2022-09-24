@@ -7,7 +7,6 @@ import 'package:location/location.dart';
 
 import '../../routes.dart';
 
-
 class LiveLocationPage extends StatefulWidget {
   static const String route = '/home';
 
@@ -107,37 +106,45 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
 
     return Scaffold(
       appBar: AppBar(
-          automaticallyImplyLeading: false,
-          title: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                Image.asset(
-                'assets/images/logo.png',
-                fit: BoxFit.contain,
-                height: 32,
-                ),
-                Container(
-                padding: const EdgeInsets.all(8.0), child: Text('FixMS'))
-                ],
-             ),
-          actions: <Widget>[
-                    IconButton(
-                    icon: const Icon(Icons.policy),
-                    tooltip: 'Datenschutz und Impressum',
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(Routes.imprint);
-                      // handle the press
-                    },
-                    ),
-                    IconButton(
-                     icon: const Icon(Icons.settings),
-                     tooltip: 'Einstellungen',
-                     onPressed: () {
-                       Navigator.of(context).pushNamed(Routes.settings);
-                       // handle the press
-                    },
-                    ),
-                  ],
+        automaticallyImplyLeading: false,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Image.asset(
+              'assets/images/logo.png',
+              fit: BoxFit.contain,
+              height: 32,
+            ),
+            Container(padding: const EdgeInsets.all(8.0), child: Text('FixMS'))
+          ],
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.of(context).pushNamed(Routes.issues);
+            },
+            icon: const Icon(
+              Icons.warning_amber,
+            ),
+            tooltip: 'Gespeicherte Mängel',
+          ),
+          IconButton(
+            icon: const Icon(Icons.policy),
+            tooltip: 'Datenschutz und Impressum',
+            onPressed: () {
+              Navigator.of(context).pushNamed(Routes.imprint);
+              // handle the press
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.settings),
+            tooltip: 'Einstellungen',
+            onPressed: () {
+              Navigator.of(context).pushNamed(Routes.settings);
+              // handle the press
+            },
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(8),
@@ -148,14 +155,14 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
                 mapController: _mapController,
                 options: MapOptions(
                   center:
-                  LatLng(currentLatLng.latitude, currentLatLng.longitude),
+                      LatLng(currentLatLng.latitude, currentLatLng.longitude),
                   zoom: 18,
                   interactiveFlags: interActiveFlags,
                 ),
                 children: [
                   TileLayer(
                     urlTemplate:
-                    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
                   CustomCurrentLocationLayer(),
@@ -189,18 +196,17 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
                         ),
                       ),
                       Marker(
-                          point: LatLng(51.951330, 7.641147),
-                          width: 80,
-                          height: 80,
-                          builder: (context) => const Icon(
-                            Icons.location_on,
-                            color: Colors.red,
-                          ),
+                        point: LatLng(51.951330, 7.641147),
+                        width: 80,
+                        height: 80,
+                        builder: (context) => const Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                        ),
                       ),
                     ],
                   ),
                 ],
-
               ),
             ),
           ],

@@ -47,9 +47,15 @@ class OnboardingScreen extends StatelessWidget {
                         text: 'fixMS',
                         style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: '. Wir möchten Dir helfen, Dein '),
-                    TextSpan(text: 'Münster', style: TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: ' schöner zu machen. Du hast etwas entdeckt, das '),
-                    TextSpan(text: 'kaputt', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'Münster',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text:
+                            ' schöner zu machen. Du hast etwas entdeckt, das '),
+                    TextSpan(
+                        text: 'kaputt',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(
                         text: 'Münster',
                         style: TextStyle(fontWeight: FontWeight.bold)),

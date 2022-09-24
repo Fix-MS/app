@@ -56,6 +56,7 @@ class IssueFormScreenState extends State<IssueFormScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final isLastPage = curPage == pages.length - 1;
     return Scaffold(
       appBar: FixMSAppBar(
         title: 'Mängelmeldung',
@@ -84,33 +85,11 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                 padding: const EdgeInsets.fromLTRB(8, 0, 8, 10),
                 child: Row(
                   children: [
-                    ElevatedButton(
-                      onPressed: curPage != 0
-                          ? () {
-                              pageController.previousPage(
-                                duration: const Duration(milliseconds: 200),
-                                curve: const Interval(0, 1),
-                              );
-                            }
-                          : null,
-                      style: ElevatedButton.styleFrom(
-                        shadowColor: Colors.redAccent,
-                        elevation: 3,
-                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
-                        minimumSize: Size(200, 80), //////// HERE
-                      ),
-                      child: const Text(
-                        'Zurück',
-                      ),
-                    ),
-                    const Expanded(
-                      child: SizedBox(),
-                    ),
-                    if (curPage != pages.length - 1)
-                      ElevatedButton(
-                        onPressed: nextEnabled
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: curPage != 0
                             ? () {
-                                pageController.nextPage(
+                                pageController.previousPage(
                                   duration: const Duration(milliseconds: 200),
                                   curve: const Interval(0, 1),
                                 );
@@ -119,39 +98,71 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                         style: ElevatedButton.styleFrom(
                           shadowColor: Colors.redAccent,
                           elevation: 3,
-
                           shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0)),
-                          minimumSize: Size(200, 80), //////// HERE
+                            borderRadius: BorderRadius.circular(16.0),
+                          ),
+                          minimumSize: const Size(0, 80),
                         ),
                         child: const Text(
-                          'Weiter',
+                          'Zurück',
+                        ),
+                      ),
+                    ),
+                    const SizedBox(
+                      width: 8,
+                    ),
+                    if (curPage != pages.length - 1)
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: nextEnabled
+                              ? () {
+                                  pageController.nextPage(
+                                    duration: const Duration(milliseconds: 200),
+                                    curve: const Interval(0, 1),
+                                  );
+                                }
+                              : null,
+                          style: ElevatedButton.styleFrom(
+                            shadowColor: Colors.redAccent,
+                            elevation: 3,
+
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            minimumSize: const Size(0, 80),
+                          ),
+                          child: const Text(
+                            'Weiter',
+                          ),
                         ),
                       )
                     else
-                      ElevatedButton(
-                        onPressed: nextEnabled
-                            ? () async {
-                                // TODO: Submit to backend
-                                if (_formKey.currentState!.validate()) {
-                                  _formKey.currentState!.save();
-                                  formData.settings = await GetIt.I
-                                      .get<StorageService>()
-                                      .loadSettings();
-                                  print(formData);
+                      Expanded(
+                        child: ElevatedButton(
+                          onPressed: nextEnabled
+                              ? () async {
+                                  // TODO: Submit to backend
+                                  if (_formKey.currentState!.validate()) {
+                                    _formKey.currentState!.save();
+                                    formData.settings = await GetIt.I
+                                        .get<StorageService>()
+                                        .loadSettings();
+                                    print(formData);
+                                  }
                                 }
-                              }
-                            : null,
-                        style: ElevatedButton.styleFrom(
-                          shadowColor: Colors.redAccent,
-                          elevation: 3,
-
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16.0)),
-                          minimumSize: Size(200, 80), //////// HERE
-                        ),
-                        child: const Text(
-                          'Weiter',
+                              : null,
+                          style: ElevatedButton.styleFrom(
+                            shadowColor: Colors.redAccent,
+                            elevation: 3,
+  
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0),
+                            ),
+                            minimumSize: const Size(0, 80),
+                          ),
+                          child: const Text(
+                            'Weiter',
+                          ),
                         ),
                       ),
                   ],
