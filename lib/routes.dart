@@ -19,4 +19,9 @@ class Routes {
     onboarding: () => const OnboardingScreen(),
     imprint: () => const ImprintScreen(),
   };
+        form: () => const IssueFormScreen(),
+        home: () => const HomeScreen(),
+        settings: () => const SettingsScreen(),
+        onboarding: () => const OnboardingScreen(),
+      };
 }

@@ -3,14 +3,17 @@ import 'package:flutter/material.dart';
 
 class IssueFormChooseCategory extends StatefulWidget {
   final Function(bool) enableNext;
-  
+  final Function(String, String) saveCategories;
+
   const IssueFormChooseCategory({
-    super.key, 
+    super.key,
     required this.enableNext,
+    required this.saveCategories,
   });
-  
+
   @override
-  State<IssueFormChooseCategory> createState() => IssueFormChooseCategoryState();
+  State<IssueFormChooseCategory> createState() =>
+      IssueFormChooseCategoryState();
 }
 
 class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
@@ -29,57 +32,62 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
             height: 16,
           ),
           const Text(
-            'Was hast Du gesehen?',
+            'Schritt 1/4: Was hast Du gesehen?',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
           ),
           DropdownButtonFormField(
+            isExpanded: true,
             decoration: const InputDecoration(
               labelText: 'Kategorie',
             ),
-            items: IssueCategories.categoriesMap.keys.map(
-              (cat) => DropdownMenuItem(
-                value: cat,
-                child: Text(cat),
-              ),
-            ).toList(),
+            items: IssueCategories.categoriesMap.keys
+                .map(
+                  (cat) => DropdownMenuItem(
+                    value: cat,
+                    child: Text(cat),
+                  ),
+                )
+                .toList(),
             onChanged: (val) {
               if (val != null) {
                 setState(() {
-                  category = val;
                   subCategory = null;
+                  category = val;
                 });
               }
             },
+            value: category,
           ),
           if (category != null)
-            Column(
-              children: [
-                DropdownButtonFormField(
-                  decoration: const InputDecoration(
-                    labelText: 'Unterkategorie',
-                  ),
-                  items: IssueCategories.categoriesMap[category]!.map(
-                    (subCat) => DropdownMenuItem(
-                      value: subCat,
-                      child: Text(
-                        subCat,
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: DropdownButtonFormField(
+                isExpanded: true,
+                value: subCategory,
+                decoration: const InputDecoration(
+                  labelText: 'Unterkategorie',
+                ),
+                items: (IssueCategories.categoriesMap[category] ?? [])
+                    .map(
+                      (subCat) => DropdownMenuItem(
+                        value: subCat,
+                        child: Text(
+                          subCat,
+                        ),
                       ),
-                    ),
-                  ).toList(),
-                  onChanged: (val) {
-                    if (val != null) {
-                      setState(() {
-                        subCategory = val;
-                      });
-                    }
-                  },
-                ),
-                const SizedBox(
-                  height: 16,
-                ),
-              ],
+                    )
+                    .toList(),
+                onChanged: (val) {
+                  if (val != null) {
+                    setState(() {
+                      subCategory = val;
+                    });
+                    widget.saveCategories(category!, subCategory!);
+                  }
+                },
+              ),
             ),
         ],
       ),

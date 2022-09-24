@@ -42,19 +42,19 @@ class FixMSApp extends StatelessWidget {
     return PageRouteBuilder(
       settings: settings,
       pageBuilder: (
-          BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation,
-          ) =>
-      target,
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) =>
+          target,
       transitionDuration: const Duration(milliseconds: 0),
       reverseTransitionDuration: const Duration(milliseconds: 0),
       transitionsBuilder: (
-          BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation,
-          Widget child,
-          ) {
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child,
+      ) {
         return SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(1, 0),

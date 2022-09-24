@@ -38,6 +38,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   shared_preferences: ^2.0.15
   get_it: ^7.2.0
+  file_picker: ^5.2.0
+  url_launcher: ^6.1.5
   flutter_map: ^3.0.0
   flutter_map_location_marker: any
   location: ^4.4.0
