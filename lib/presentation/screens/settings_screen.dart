@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 class SettingsScreen extends StatefulWidget {
-
   const SettingsScreen({super.key});
 
   @override
@@ -51,112 +50,146 @@ class SettingsScreenState extends State<SettingsScreen> {
                 ),
               ),
             ),
-          ),
-        ],
-      ),
-      body: SafeArea(
-        child: FutureBuilder(
-          future: loadStateFuture,
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (snapshot.hasError) {
-              return const Center(
-                child: Text(
-                  'Unknown error while loading state',
-                ),
-              );
-            } else if (!snapshot.hasData) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-
-            return Form(
-              key: _formKey,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: DisableScrollAnimation(
-                  child: ListView(
-                    children: [
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      const Text(
-                        'Um zukünftige Meldungen schneller zu machen, kannst Du hier einige Daten vorausfüllen',
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text('Vorname'),
-                        ),
-                        initialValue: savedSettings.firstName ?? '',
-                        onSaved: (val) {
-                          if (val != null && val.isEmpty) {
-                            val = null;
-                          }
-                          changedSettings.firstName = val;
-                        },
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text('Nachname'),
-                        ),
-                        initialValue: savedSettings.lastName ?? '',
-                        onSaved: (val) {
-                          if (val != null && val.isEmpty) {
-                            val = null;
-                          }
-                          changedSettings.lastName = val;
-                        },
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text('E-Mail Adresse'),
-                        ),
-                        initialValue: savedSettings.email ?? '',
-                        onSaved: (val) {
-                          if (val != null && val.isEmpty) {
-                            val = null;
-                          }
-                          changedSettings.email = val;
-                        },
-                      ),
-                      TextFormField(
-                        decoration: const InputDecoration(
-                          label: Text('Telefonnummer'),
-                        ),
-                        initialValue: savedSettings.phoneNumber ?? '',
-                        onSaved: (val) {
-                          if (val != null && val.isEmpty) {
-                            val = null;
-                          }
-                          changedSettings.phoneNumber = val;
-                        },
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
-                            storageService.saveSettings(changedSettings);
-                            Navigator.of(context).pushNamed(Routes.home);
-                          }
-                        },
-                        child: const Text(
-                          'Speichern',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            );
-          },
+          ],
         ),
-      ),
-    );
+        body: Center(
+          child: SafeArea(
+            child: Container(
+                constraints: const BoxConstraints.expand(width: 500),
+                child: FutureBuilder(
+                  future: loadStateFuture,
+                  builder:
+                      (BuildContext context, AsyncSnapshot<bool> snapshot) {
+                    if (snapshot.hasError) {
+                      return const Center(
+                        child: Text(
+                          'Unknown error while loading state',
+                        ),
+                      );
+                    } else if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    }
+
+                    return Form(
+                      key: _formKey,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
+                        child: DisableScrollAnimation(
+                          child: ListView(
+                            children: [
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              const Text(
+                                'Um zukünftige Meldungen schneller zu machen, kannst Du hier einige Daten vorausfüllen',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              TextFormField(
+                                style: const TextStyle(fontSize: 20.0),
+                                decoration: const InputDecoration(
+                                    label: Text('Vorname'),
+                                    border: OutlineInputBorder(),
+                                    filled: true,
+                                    fillColor:
+                                        Color.fromARGB(100, 255, 251, 194)),
+                                initialValue: savedSettings.firstName ?? '',
+                                onSaved: (val) {
+                                  if (val != null && val.isEmpty) {
+                                    val = null;
+                                  }
+                                  changedSettings.firstName = val;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              TextFormField(
+                                style: const TextStyle(fontSize: 20.0),
+                                decoration: const InputDecoration(
+                                    label: Text('Nachname'),
+                                    border: OutlineInputBorder(),
+                                    filled: true,
+                                    fillColor:
+                                        Color.fromARGB(100, 255, 251, 194)),
+                                initialValue: savedSettings.lastName ?? '',
+                                onSaved: (val) {
+                                  if (val != null && val.isEmpty) {
+                                    val = null;
+                                  }
+                                  changedSettings.lastName = val;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              TextFormField(
+                                style: const TextStyle(fontSize: 20.0),
+                                decoration: const InputDecoration(
+                                    label: Text('E-Mail Adresse'),
+                                    border: OutlineInputBorder(),
+                                    filled: true,
+                                    fillColor:
+                                        Color.fromARGB(100, 255, 251, 194)),
+                                initialValue: savedSettings.email ?? '',
+                                onSaved: (val) {
+                                  if (val != null && val.isEmpty) {
+                                    val = null;
+                                  }
+                                  changedSettings.email = val;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              TextFormField(
+                                style: const TextStyle(fontSize: 20.0),
+                                decoration: const InputDecoration(
+                                    label: Text('Telefonnummer'),
+                                    border: OutlineInputBorder(),
+                                    filled: true,
+                                    fillColor:
+                                        Color.fromARGB(100, 255, 251, 194)),
+                                initialValue: savedSettings.phoneNumber ?? '',
+                                onSaved: (val) {
+                                  if (val != null && val.isEmpty) {
+                                    val = null;
+                                  }
+                                  changedSettings.phoneNumber = val;
+                                },
+                              ),
+                              const SizedBox(
+                                height: 16,
+                              ),
+                              ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    fixedSize: const Size(100, 60)),
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    _formKey.currentState!.save();
+                                    storageService
+                                        .saveSettings(changedSettings);
+                                    Navigator.of(context)
+                                        .pushNamed(Routes.home);
+                                  }
+                                },
+                                child: const Text(
+                                  'Speichern',
+                                  style: TextStyle(fontSize: 20.0),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    );
+                  },
+                )),
+          ),
+        ));
   }
 }
