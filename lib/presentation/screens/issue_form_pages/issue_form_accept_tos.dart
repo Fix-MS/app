@@ -17,6 +17,12 @@ class IssueFormAcceptTosState extends State<IssueFormAcceptTos> {
   bool acceptTos = false;
 
   @override
+  void initState() {
+    super.initState();
+    widget.enableNext(false);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
