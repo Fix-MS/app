@@ -1,6 +1,7 @@
 import 'package:fix_ms/routes.dart';
 import 'package:fix_ms/services/services_init.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   registerServices();
@@ -20,12 +21,13 @@ class FixMSApp extends StatelessWidget {
         primaryColor: const Color(0xFFDA121A),
         backgroundColor: const Color(0xFFfff9dd),
         scaffoldBackgroundColor: const Color(0xFFfff9dd),
-        textTheme: ThemeData.light().textTheme.copyWith(
+        textTheme: GoogleFonts.shareTechMonoTextTheme(Theme.of(context).textTheme.copyWith(
               bodyMedium: const TextStyle(
                 color: Color(0xFF160d29),
                 fontSize: 16,
               ),
             ),
+        ),
       ),
       initialRoute: Routes.onboarding,
       onGenerateRoute: (settings) {
