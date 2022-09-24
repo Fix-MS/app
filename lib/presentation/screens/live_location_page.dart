@@ -165,7 +165,8 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
                         point: LatLng(51.952921, 7.638163),
                         width: 80,
                         height: 80,
-        Icons.location_on,
+                        builder: (context) => const Icon(
+                          Icons.location_on,
                           color: Colors.red,
                         ),
                       ),

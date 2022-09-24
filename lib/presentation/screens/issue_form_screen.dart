@@ -81,7 +81,7 @@ class IssueFormScreenState extends State<IssueFormScreen> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8),
+                padding: const EdgeInsets.fromLTRB(8, 0, 8, 10),
                 child: Row(
                   children: [
                     ElevatedButton(
@@ -93,6 +93,12 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                               );
                             }
                           : null,
+                      style: ElevatedButton.styleFrom(
+                        shadowColor: Colors.redAccent,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+                        minimumSize: Size(200, 80), //////// HERE
+                      ),
                       child: const Text(
                         'Zurück',
                       ),
@@ -110,6 +116,14 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                                 );
                               }
                             : null,
+                        style: ElevatedButton.styleFrom(
+                          shadowColor: Colors.redAccent,
+                          elevation: 3,
+
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0)),
+                          minimumSize: Size(200, 80), //////// HERE
+                        ),
                         child: const Text(
                           'Weiter',
                         ),
@@ -128,6 +142,14 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                                 }
                               }
                             : null,
+                        style: ElevatedButton.styleFrom(
+                          shadowColor: Colors.redAccent,
+                          elevation: 3,
+
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(16.0)),
+                          minimumSize: Size(200, 80), //////// HERE
+                        ),
                         child: const Text(
                           'Weiter',
                         ),
