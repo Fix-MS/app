@@ -102,7 +102,7 @@ class LiveLocationPageState extends State<LiveLocationPage> {
       currentLatLng =
           LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!);
     } else {
-      currentLatLng = LatLng(0, 0);
+      currentLatLng = LatLng(51.950913, 7.638194);
     }
 
     return Scaffold(
