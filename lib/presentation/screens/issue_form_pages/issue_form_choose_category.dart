@@ -1,5 +1,7 @@
 import 'package:fix_ms/models/issue_categories.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 
 class IssueFormChooseCategory extends StatefulWidget {
   final Function(bool) enableNext;
@@ -19,6 +21,7 @@ class IssueFormChooseCategory extends StatefulWidget {
 class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
   String? category = 'Geh-/Radweg, Radverkehr';
   String? subCategory = 'starke Verschmutzung/Scherben';
+  int interActiveFlags = InteractiveFlag.all;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +31,37 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Container(
+            height: 400,
+            child: FlutterMap(
+              options: MapOptions(
+                center:
+                LatLng(51.956789, 7.628728),
+                zoom: 18,
+                interactiveFlags: interActiveFlags,
+              ),
+              children: [
+                TileLayer(
+                  urlTemplate:
+                  'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'dev.fleaflet.flutter_map.example',
+                ),
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: LatLng(51.956789, 7.628728),
+                      width: 80,
+                      height: 80,
+                      builder: (context) => const Icon(
+                        Icons.location_on,
+                        color: Colors.red,
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
+          ),
           const SizedBox(
             height: 16,
           ),
