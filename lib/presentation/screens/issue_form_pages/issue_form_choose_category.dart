@@ -30,7 +30,7 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 400,
+          height: 250,
           child: FlutterMap(
             options: MapOptions(
               center:
