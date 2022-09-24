@@ -16,15 +16,17 @@ class FixMSApp extends StatelessWidget {
     return MaterialApp(
       title: 'fixMS',
       theme: ThemeData(
-          primarySwatch: createMaterialColor(const Color(0xFFDA121A)),
-          primaryColor: const Color(0xFFDA121A),
-          backgroundColor: const Color(0xFFFCDD09),
-          scaffoldBackgroundColor: const Color(0xFFFCDD09),
-          textTheme: ThemeData.light().textTheme.copyWith(
-                bodyMedium: const TextStyle(
-                  fontSize: 16,
-                ),
-              )),
+        primarySwatch: createMaterialColor(const Color(0xFFDA121A)),
+        primaryColor: const Color(0xFFDA121A),
+        backgroundColor: const Color(0xFFfff9dd),
+        scaffoldBackgroundColor: const Color(0xFFfff9dd),
+        textTheme: ThemeData.light().textTheme.copyWith(
+          bodyMedium: const TextStyle(
+            color: const Color(0xFF160d29),
+            fontSize: 16,
+          ),
+        )
+      ),
       initialRoute: Routes.onboarding,
       onGenerateRoute: (settings) {
         final builder = Routes.getRoutesMap()[settings.name];

@@ -40,6 +40,14 @@ dependencies:
   get_it: ^7.2.0
   file_picker: ^5.2.0
   url_launcher: ^6.1.5
+  flutter_map: ^3.0.0
+  flutter_map_location_marker: any
+  location: ^4.4.0
+  latlong2: ^0.8.1
+  proj4dart: ^2.1.0
+  positioned_tap_detector_2: ^1.0.4
+  geolocator: ^9.0.2
+  flutter_html: ^2.2.1
 
 dev_dependencies:
   flutter_test:
