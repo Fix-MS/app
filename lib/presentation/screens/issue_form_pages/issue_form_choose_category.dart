@@ -30,7 +30,7 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(
-          height: 250,
+          height: 220,
           child: FlutterMap(
             options: MapOptions(
               center:
@@ -66,7 +66,7 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
           child: Text(
-            'Schritt 1/4: Was hast Du gesehen?',
+            'Schritt 1/4: Was war\'s?',
             style: TextStyle(
               fontWeight: FontWeight.bold,
             ),
