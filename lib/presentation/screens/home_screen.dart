@@ -40,6 +40,14 @@ class HomeScreenState extends State<HomeScreen> {
               ),
               ElevatedButton(
                 onPressed: () {
+                  Navigator.of(context).pushNamed(Routes.form);
+                },
+                child: const Text(
+                  'Open Form',
+                ),
+              ),
+              ElevatedButton(
+                onPressed: () {
                   Navigator.of(context).pushNamed(Routes.settings);
                 },
                 child: const Text(
