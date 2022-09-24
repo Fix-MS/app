@@ -1,5 +1,4 @@
 import 'package:fix_ms/routes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DraftIssueItem extends StatelessWidget {
@@ -42,12 +41,24 @@ class DraftIssueItem extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      address,
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                      ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: Text(
+                            address,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                        Text(
+                          device,
+                          style: const TextStyle(
+                            fontStyle: FontStyle.italic,
+                          ),
+                        ),
+                      ],
                     ),
                     Text(
                       category,
@@ -57,12 +68,6 @@ class DraftIssueItem extends StatelessWidget {
                     ),
                     Text(
                       time,
-                      style: const TextStyle(
-                        fontStyle: FontStyle.italic,
-                      ),
-                    ),
-                    Text(
-                      device,
                       style: const TextStyle(
                         fontStyle: FontStyle.italic,
                       ),

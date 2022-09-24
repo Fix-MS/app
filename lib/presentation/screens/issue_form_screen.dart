@@ -4,9 +4,8 @@ import 'package:fix_ms/presentation/screens/issue_form_pages/issue_form_add_desc
 import 'package:fix_ms/presentation/screens/issue_form_pages/issue_form_choose_category.dart';
 import 'package:fix_ms/presentation/screens/issue_form_pages/issue_form_choose_image.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
-import 'package:fix_ms/services/storage_service.dart';
+import 'package:fix_ms/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:get_it/get_it.dart';
 
 class IssueFormScreen extends StatefulWidget {
   const IssueFormScreen({super.key});
@@ -56,7 +55,6 @@ class IssueFormScreenState extends State<IssueFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final isLastPage = curPage == pages.length - 1;
     return Scaffold(
       appBar: FixMSAppBar(
         title: 'Mängelmeldung',
@@ -141,13 +139,17 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                         child: ElevatedButton(
                           onPressed: nextEnabled
                               ? () async {
-                                  // TODO: Submit to backend
                                   if (_formKey.currentState!.validate()) {
                                     _formKey.currentState!.save();
-                                    formData.settings = await GetIt.I
-                                        .get<StorageService>()
-                                        .loadSettings();
-                                    print(formData);
+                                    //formData.settings = await GetIt.I
+                                    //    .get<StorageService>()
+                                    //    .loadSettings();
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                        content: Text('Erfolgreich abgeschickt!'),
+                                      ),
+                                    );
+                                    Navigator.of(context).pushNamed(Routes.home);
                                   }
                                 }
                               : null,

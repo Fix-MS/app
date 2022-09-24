@@ -40,7 +40,7 @@ class OnboardingScreen extends StatelessWidget {
                   text: 'Willkomen bei ',
                   style: TextStyle(
                     fontSize: 20,
-                    color: const Color(0xFFDA121A),
+                    color: Color(0xFFDA121A),
                   ),
                   children: [
                     TextSpan(

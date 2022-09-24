@@ -1,4 +1,5 @@
 import 'package:fix_ms/presentation/widgets/current_location_layer.dart';
+import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_map/flutter_map.dart';
@@ -13,10 +14,10 @@ class LiveLocationPage extends StatefulWidget {
   const LiveLocationPage({Key? key}) : super(key: key);
 
   @override
-  _LiveLocationPageState createState() => _LiveLocationPageState();
+  LiveLocationPageState createState() => LiveLocationPageState();
 }
 
-class _LiveLocationPageState extends State<LiveLocationPage> {
+class LiveLocationPageState extends State<LiveLocationPage> {
   LocationData? _currentLocation;
   late final MapController _mapController;
 
@@ -105,19 +106,9 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(
+      appBar: FixMSAppBar(
         automaticallyImplyLeading: false,
-        title: Row(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Image.asset(
-              'assets/images/logo.png',
-              fit: BoxFit.contain,
-              height: 32,
-            ),
-            Container(padding: const EdgeInsets.all(8.0), child: Text('FixMS'))
-          ],
-        ),
+        title: 'FixMS',
         actions: [
           IconButton(
             onPressed: () {
@@ -165,7 +156,7 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
                         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
-                  CustomCurrentLocationLayer(),
+                  const CustomCurrentLocationLayer(),
                   MarkerLayer(
                     markers: [
                       Marker(

@@ -1,6 +1,5 @@
 import 'package:fix_ms/presentation/widgets/draft_issue_item.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DraftIssuesScreen extends StatelessWidget {

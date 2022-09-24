@@ -1,7 +1,5 @@
 import 'package:fix_ms/models/saved_settings.dart';
-import 'package:fix_ms/presentation/widgets/disable_scroll_animation.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
-import 'package:fix_ms/routes.dart';
 import 'package:fix_ms/services/storage_service.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
