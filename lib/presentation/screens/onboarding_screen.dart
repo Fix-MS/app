@@ -2,7 +2,6 @@ import 'package:fix_ms/routes.dart';
 import 'package:flutter/material.dart';
 
 class OnboardingScreen extends StatelessWidget {
-
   const OnboardingScreen({super.key});
 
   @override
@@ -44,17 +43,31 @@ class OnboardingScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                   children: [
-                    TextSpan(text: 'fixMS', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'fixMS',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: '. Wir möchten Dir helfen, Dein '),
-                    TextSpan(text: 'Münster', style: TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: ' schöner und funktionaler zu machen. Du hast etwas entdeckt, das '),
-                    TextSpan(text: 'kaputt', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'Münster',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text:
+                            ' schöner und funktionaler zu machen. Du hast etwas entdeckt, das '),
+                    TextSpan(
+                        text: 'kaputt',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: ' oder '),
-                    TextSpan(text: 'dreckig', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'dreckig',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: ' ist? Hier kannst Du es '),
-                    TextSpan(text: 'schnell', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'schnell',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: ' der richtigen Stelle '),
-                    TextSpan(text: 'melden!', style: TextStyle(fontWeight: FontWeight.bold)),
+                    TextSpan(
+                        text: 'melden!',
+                        style: TextStyle(fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),

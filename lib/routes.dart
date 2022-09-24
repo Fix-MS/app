@@ -11,9 +11,9 @@ class Routes {
   static const onboarding = '/onboarding';
 
   static Map<String, Widget Function()> getRoutesMap() => {
-    form: () => const IssueFormScreen(),
-    home: () => const HomeScreen(),
-    settings: () => const SettingsScreen(),
-    onboarding: () => const OnboardingScreen(),
-  };
+        form: () => const IssueFormScreen(),
+        home: () => const HomeScreen(),
+        settings: () => const SettingsScreen(),
+        onboarding: () => const OnboardingScreen(),
+      };
 }

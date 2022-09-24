@@ -3,12 +3,12 @@ import 'package:url_launcher/url_launcher.dart';
 
 class IssueFormAcceptTos extends StatefulWidget {
   final Function(bool) enableNext;
-  
+
   const IssueFormAcceptTos({
-    super.key, 
+    super.key,
     required this.enableNext,
   });
-  
+
   @override
   State<IssueFormAcceptTos> createState() => IssueFormAcceptTosState();
 }
@@ -33,17 +33,16 @@ class IssueFormAcceptTosState extends State<IssueFormAcceptTos> {
             ),
           ),
           const Text(
-            'Um den Service der Stadt Münster in Anspruch nehmen zu können, muss der Datenschutzerklärung zugestimmt werden:'
-          ),
+              'Um den Service der Stadt Münster in Anspruch nehmen zu können, muss der Datenschutzerklärung zugestimmt werden:'),
           TextButton(
-            onPressed: () => launchUrl(Uri.parse('https://www.stadt-muenster.de/datenschutz')),
+            onPressed: () => launchUrl(
+                Uri.parse('https://www.stadt-muenster.de/datenschutz')),
             child: const Text(
               'Datenschutzerklärung',
             ),
           ),
           const Text(
-            'Datenschutz-Hinweis: Um Ihnen ggf. Rückmeldung geben zu können, werden die Daten ein Jahr gespeichert; anschließend werden sie anonymisiert.'
-          ),
+              'Datenschutz-Hinweis: Um Ihnen ggf. Rückmeldung geben zu können, werden die Daten ein Jahr gespeichert; anschließend werden sie anonymisiert.'),
           const SizedBox(
             height: 16,
           ),

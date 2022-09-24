@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 class IssueFormAddDescription extends StatefulWidget {
   final Function(bool) enableNext;
   final Function(String) saveDescription;
-  
+
   const IssueFormAddDescription({
-    super.key, 
+    super.key,
     required this.enableNext,
     required this.saveDescription,
   });
-  
+
   @override
-  State<IssueFormAddDescription> createState() => IssueFormAddDescriptionState();
+  State<IssueFormAddDescription> createState() =>
+      IssueFormAddDescriptionState();
 }
 
 class IssueFormAddDescriptionState extends State<IssueFormAddDescription> {

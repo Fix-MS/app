@@ -16,16 +16,15 @@ class FixMSApp extends StatelessWidget {
     return MaterialApp(
       title: 'fixMS',
       theme: ThemeData(
-        primarySwatch: createMaterialColor(const Color(0xFFDA121A)),
-        primaryColor: const Color(0xFFDA121A),
-        backgroundColor: const Color(0xFFFCDD09),
-        scaffoldBackgroundColor: const Color(0xFFFCDD09),
-        textTheme: ThemeData.light().textTheme.copyWith(
-          bodyMedium: const TextStyle(
-            fontSize: 16,
-          ),
-        )
-      ),
+          primarySwatch: createMaterialColor(const Color(0xFFDA121A)),
+          primaryColor: const Color(0xFFDA121A),
+          backgroundColor: const Color(0xFFFCDD09),
+          scaffoldBackgroundColor: const Color(0xFFFCDD09),
+          textTheme: ThemeData.light().textTheme.copyWith(
+                bodyMedium: const TextStyle(
+                  fontSize: 16,
+                ),
+              )),
       initialRoute: Routes.onboarding,
       onGenerateRoute: (settings) {
         final builder = Routes.getRoutesMap()[settings.name];
@@ -41,19 +40,19 @@ class FixMSApp extends StatelessWidget {
     return PageRouteBuilder(
       settings: settings,
       pageBuilder: (
-          BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation,
-          ) =>
-      target,
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+      ) =>
+          target,
       transitionDuration: const Duration(milliseconds: 0),
       reverseTransitionDuration: const Duration(milliseconds: 0),
       transitionsBuilder: (
-          BuildContext context,
-          Animation<double> animation,
-          Animation<double> secondaryAnimation,
-          Widget child,
-          ) {
+        BuildContext context,
+        Animation<double> animation,
+        Animation<double> secondaryAnimation,
+        Widget child,
+      ) {
         return SlideTransition(
           position: Tween<Offset>(
             begin: const Offset(1, 0),

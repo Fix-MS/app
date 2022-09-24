@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 class IssueFormChooseCategory extends StatefulWidget {
   final Function(bool) enableNext;
   final Function(String, String) saveCategories;
-  
+
   const IssueFormChooseCategory({
     super.key,
     required this.enableNext,
     required this.saveCategories,
   });
-  
+
   @override
-  State<IssueFormChooseCategory> createState() => IssueFormChooseCategoryState();
+  State<IssueFormChooseCategory> createState() =>
+      IssueFormChooseCategoryState();
 }
 
 class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
@@ -41,12 +42,14 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
             decoration: const InputDecoration(
               labelText: 'Kategorie',
             ),
-            items: IssueCategories.categoriesMap.keys.map(
-              (cat) => DropdownMenuItem(
-                value: cat,
-                child: Text(cat),
-              ),
-            ).toList(),
+            items: IssueCategories.categoriesMap.keys
+                .map(
+                  (cat) => DropdownMenuItem(
+                    value: cat,
+                    child: Text(cat),
+                  ),
+                )
+                .toList(),
             onChanged: (val) {
               if (val != null) {
                 setState(() {
@@ -66,14 +69,16 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
                 decoration: const InputDecoration(
                   labelText: 'Unterkategorie',
                 ),
-                items: (IssueCategories.categoriesMap[category] ?? []).map(
-                  (subCat) => DropdownMenuItem(
-                    value: subCat,
-                    child: Text(
-                      subCat,
-                    ),
-                  ),
-                ).toList(),
+                items: (IssueCategories.categoriesMap[category] ?? [])
+                    .map(
+                      (subCat) => DropdownMenuItem(
+                        value: subCat,
+                        child: Text(
+                          subCat,
+                        ),
+                      ),
+                    )
+                    .toList(),
                 onChanged: (val) {
                   if (val != null) {
                     setState(() {

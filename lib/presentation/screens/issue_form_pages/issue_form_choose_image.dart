@@ -4,13 +4,13 @@ import 'package:flutter/material.dart';
 class IssueFormChooseImage extends StatefulWidget {
   final Function(bool) enableNext;
   final Function(PlatformFile? image) saveImage;
-  
+
   const IssueFormChooseImage({
-    super.key, 
+    super.key,
     required this.enableNext,
     required this.saveImage,
   });
-  
+
   @override
   State<IssueFormChooseImage> createState() => IssueFormChooseImageState();
 }

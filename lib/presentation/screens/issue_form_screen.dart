@@ -9,7 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 class IssueFormScreen extends StatefulWidget {
-
   const IssueFormScreen({super.key});
 
   @override
@@ -86,12 +85,14 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                 child: Row(
                   children: [
                     ElevatedButton(
-                      onPressed: curPage != 0 ? () {
-                        pageController.previousPage(
-                          duration: const Duration(milliseconds: 200),
-                          curve: const Interval(0, 1),
-                        );
-                      } : null,
+                      onPressed: curPage != 0
+                          ? () {
+                              pageController.previousPage(
+                                duration: const Duration(milliseconds: 200),
+                                curve: const Interval(0, 1),
+                              );
+                            }
+                          : null,
                       child: const Text(
                         'Zurück',
                       ),
@@ -101,26 +102,32 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                     ),
                     if (curPage != pages.length - 1)
                       ElevatedButton(
-                        onPressed: nextEnabled ? () {
-                          pageController.nextPage(
-                            duration: const Duration(milliseconds: 200),
-                            curve: const Interval(0, 1),
-                          );
-                        } : null,
+                        onPressed: nextEnabled
+                            ? () {
+                                pageController.nextPage(
+                                  duration: const Duration(milliseconds: 200),
+                                  curve: const Interval(0, 1),
+                                );
+                              }
+                            : null,
                         child: const Text(
                           'Weiter',
                         ),
                       )
                     else
                       ElevatedButton(
-                        onPressed: nextEnabled ? () async {
-                          // TODO: Submit to backend
-                          if (_formKey.currentState!.validate()) {
-                            _formKey.currentState!.save();
-                            formData.settings = await GetIt.I.get<StorageService>().loadSettings();
-                            print(formData);
-                          }
-                        } : null,
+                        onPressed: nextEnabled
+                            ? () async {
+                                // TODO: Submit to backend
+                                if (_formKey.currentState!.validate()) {
+                                  _formKey.currentState!.save();
+                                  formData.settings = await GetIt.I
+                                      .get<StorageService>()
+                                      .loadSettings();
+                                  print(formData);
+                                }
+                              }
+                            : null,
                         child: const Text(
                           'Weiter',
                         ),
