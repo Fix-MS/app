@@ -5,9 +5,11 @@ import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:location/location.dart';
 
+import '../../routes.dart';
+
 
 class LiveLocationPage extends StatefulWidget {
-  static const String route = '/live_location';
+  static const String route = '/home';
 
   const LiveLocationPage({Key? key}) : super(key: key);
 
@@ -19,7 +21,7 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
   LocationData? _currentLocation;
   late final MapController _mapController;
 
-  bool _liveUpdate = false;
+  bool _liveUpdate = true;
   bool _permission = false;
 
   String? _serviceError = '';
@@ -104,27 +106,50 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Home')),
+      appBar: AppBar(
+          automaticallyImplyLeading: false,
+          title: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                Image.asset(
+                'assets/images/logo.png',
+                fit: BoxFit.contain,
+                height: 32,
+                ),
+                Container(
+                padding: const EdgeInsets.all(8.0), child: Text('FixMS'))
+                ],
+             ),
+          actions: <Widget>[
+                    IconButton(
+                    icon: const Icon(Icons.policy),
+                    tooltip: 'Datenschutz und Impressum',
+                    onPressed: () {
+                      Navigator.of(context).pushNamed(Routes.imprint);
+                      // handle the press
+                    },
+                    ),
+                    IconButton(
+                     icon: const Icon(Icons.settings),
+                     tooltip: 'Einstellungen',
+                     onPressed: () {
+                       Navigator.of(context).pushNamed(Routes.settings);
+                       // handle the press
+                    },
+                    ),
+                  ],
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.only(top: 8, bottom: 8),
-              child: _serviceError!.isEmpty
-                  ? Text('This is a map that is showing '
-                  '(${currentLatLng.latitude}, ${currentLatLng.longitude}).')
-                  : Text(
-                  'Error occured while acquiring location. Error Message : '
-                      '$_serviceError'),
-            ),
             Flexible(
               child: FlutterMap(
                 mapController: _mapController,
                 options: MapOptions(
                   center:
                   LatLng(currentLatLng.latitude, currentLatLng.longitude),
-                  zoom: 17,
+                  zoom: 18,
                   interactiveFlags: interActiveFlags,
                 ),
                 children: [
@@ -145,25 +170,12 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
         return FloatingActionButton(
           onPressed: () {
             setState(() {
-              _liveUpdate = !_liveUpdate;
-
-              if (_liveUpdate) {
-                interActiveFlags = InteractiveFlag.rotate |
-                InteractiveFlag.pinchZoom |
-                InteractiveFlag.doubleTapZoom;
-
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-                  content: Text(
-                      'In live update mode only zoom and rotation are enable'),
-                ));
-              } else {
-                interActiveFlags = InteractiveFlag.all;
-              }
+              Navigator.of(context).pushNamed(Routes.form);
             });
           },
-          child: _liveUpdate
-              ? const Icon(Icons.location_on)
-              : const Icon(Icons.location_off),
+          child: const Icon(
+            Icons.add,
+          ),
         );
       }),
     );

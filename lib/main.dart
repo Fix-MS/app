@@ -18,10 +18,11 @@ class FixMSApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: createMaterialColor(const Color(0xFFDA121A)),
         primaryColor: const Color(0xFFDA121A),
-        backgroundColor: const Color(0xFFFCDD09),
-        scaffoldBackgroundColor: const Color(0xFFFCDD09),
+        backgroundColor: const Color(0xFFfff9dd),
+        scaffoldBackgroundColor: const Color(0xFFfff9dd),
         textTheme: ThemeData.light().textTheme.copyWith(
           bodyMedium: const TextStyle(
+            color: const Color(0xFF160d29),
             fontSize: 16,
           ),
         )

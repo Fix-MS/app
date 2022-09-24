@@ -34,20 +34,20 @@ class OnboardingScreen extends StatelessWidget {
               height: screenHeight * 0.2,
             ),
             Container(
-              color: const Color.fromARGB(180, 255, 255, 255),
+              color: const Color.fromARGB(200, 252, 221, 9),
               child: RichText(
                 textAlign: TextAlign.center,
                 text: const TextSpan(
                   text: 'Willkomen bei ',
                   style: TextStyle(
                     fontSize: 20,
-                    color: Colors.black,
+                    color: const Color(0xFFDA121A),
                   ),
                   children: [
                     TextSpan(text: 'fixMS', style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: '. Wir möchten Dir helfen, Dein '),
                     TextSpan(text: 'Münster', style: TextStyle(fontWeight: FontWeight.bold)),
-                    TextSpan(text: ' schöner und funktionaler zu machen. Du hast etwas entdeckt, das '),
+                    TextSpan(text: ' schöner zu machen. Du hast etwas entdeckt, das '),
                     TextSpan(text: 'kaputt', style: TextStyle(fontWeight: FontWeight.bold)),
                     TextSpan(text: ' oder '),
                     TextSpan(text: 'dreckig', style: TextStyle(fontWeight: FontWeight.bold)),
