@@ -18,92 +18,18 @@ class LiveLocationPage extends StatefulWidget {
 }
 
 class LiveLocationPageState extends State<LiveLocationPage> {
-  LocationData? _currentLocation;
   late final MapController _mapController;
 
-  bool _liveUpdate = true;
-  bool _permission = false;
-
-  String? _serviceError = '';
-
   int interActiveFlags = InteractiveFlag.all;
-
-  final Location _locationService = Location();
 
   @override
   void initState() {
     super.initState();
     _mapController = MapController();
-    initLocationService();
   }
 
-  void initLocationService() async {
-    await _locationService.changeSettings(
-      accuracy: LocationAccuracy.high,
-      interval: 1000,
-    );
-
-    LocationData? location;
-    bool serviceEnabled;
-    bool serviceRequestResult;
-
-    try {
-      serviceEnabled = await _locationService.serviceEnabled();
-
-      if (serviceEnabled) {
-        final permission = await _locationService.requestPermission();
-        _permission = permission == PermissionStatus.granted;
-
-        if (_permission) {
-          location = await _locationService.getLocation();
-          _currentLocation = location;
-          _locationService.onLocationChanged
-              .listen((LocationData result) async {
-            if (mounted) {
-              setState(() {
-                _currentLocation = result;
-
-                // If Live Update is enabled, move map center
-                if (_liveUpdate) {
-                  _mapController.move(
-                      LatLng(_currentLocation!.latitude!,
-                          _currentLocation!.longitude!),
-                      _mapController.zoom);
-                }
-              });
-            }
-          });
-        }
-      } else {
-        serviceRequestResult = await _locationService.requestService();
-        if (serviceRequestResult) {
-          initLocationService();
-          return;
-        }
-      }
-    } on PlatformException catch (e) {
-      debugPrint(e.toString());
-      if (e.code == 'PERMISSION_DENIED') {
-        _serviceError = e.message;
-      } else if (e.code == 'SERVICE_STATUS_ERROR') {
-        _serviceError = e.message;
-      }
-      location = null;
-    }
-  }
-
-  @override
+    @override
   Widget build(BuildContext context) {
-    LatLng currentLatLng;
-
-    // Until currentLocation is initially updated, Widget can locate to 0, 0
-    // by default or store previous location value to show.
-    if (_currentLocation != null) {
-      currentLatLng =
-          LatLng(_currentLocation!.latitude!, _currentLocation!.longitude!);
-    } else {
-      currentLatLng = LatLng(51.950913, 7.638194);
-    }
 
     return Scaffold(
       appBar: FixMSAppBar(
@@ -146,7 +72,7 @@ class LiveLocationPageState extends State<LiveLocationPage> {
                 mapController: _mapController,
                 options: MapOptions(
                   center:
-                      LatLng(currentLatLng.latitude, currentLatLng.longitude),
+                      LatLng(51.950637, 7.638475),
                   zoom: 18,
                   interactiveFlags: interActiveFlags,
                 ),
@@ -156,48 +82,21 @@ class LiveLocationPageState extends State<LiveLocationPage> {
                         'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
-                  const CustomCurrentLocationLayer(),
                   MarkerLayer(
                     markers: [
                       Marker(
-                        point: LatLng(51.952921, 7.638163),
-                        width: 80,
-                        height: 80,
+                        point: LatLng(51.950637, 7.638475),
+                        width: 160,
+                        height: 160,
                         builder: (context) => const Icon(
-                          Icons.location_on,
+                          Icons.my_location,
                           color: Colors.red,
                         ),
-                      ),
-                      Marker(
-                        point: LatLng(51.952740, 7.636241),
-                        width: 80,
-                        height: 80,
-                        builder: (context) => const Icon(
-                          Icons.location_on,
-                          color: Colors.red,
-                        ),
-                      ),
-                      Marker(
-                        point: LatLng(51.950418, 7.638827),
-                        width: 80,
-                        height: 80,
-                        builder: (context) => const Icon(
-                          Icons.location_on,
-                          color: Colors.red,
-                        ),
-                      ),
-                      Marker(
-                        point: LatLng(51.951330, 7.641147),
-                        width: 80,
-                        height: 80,
-                        builder: (context) => const Icon(
-                          Icons.location_on,
-                          color: Colors.red,
-                        ),
-                      ),
+                      )
                     ],
                   ),
                 ],
+
               ),
             ),
           ],
