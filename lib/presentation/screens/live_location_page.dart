@@ -159,6 +159,45 @@ class _LiveLocationPageState extends State<LiveLocationPage> {
                     userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                   ),
                   CustomCurrentLocationLayer(),
+                  MarkerLayer(
+                    markers: [
+                      Marker(
+                        point: LatLng(51.952921, 7.638163),
+                        width: 80,
+                        height: 80,
+        Icons.location_on,
+                          color: Colors.red,
+                        ),
+                      ),
+                      Marker(
+                        point: LatLng(51.952740, 7.636241),
+                        width: 80,
+                        height: 80,
+                        builder: (context) => const Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                        ),
+                      ),
+                      Marker(
+                        point: LatLng(51.950418, 7.638827),
+                        width: 80,
+                        height: 80,
+                        builder: (context) => const Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                        ),
+                      ),
+                      Marker(
+                          point: LatLng(51.951330, 7.641147),
+                          width: 80,
+                          height: 80,
+                          builder: (context) => const Icon(
+                            Icons.location_on,
+                            color: Colors.red,
+                          ),
+                      ),
+                    ],
+                  ),
                 ],
 
               ),

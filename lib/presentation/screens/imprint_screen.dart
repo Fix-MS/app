@@ -54,8 +54,9 @@ class ImprintScreenState extends State<ImprintScreen> {
                 child: CircularProgressIndicator(),
               );
             }
-            return Html(
-              data: """<div class='impressum'><h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Felix Ulonska <br> Humboldtstraße 32<br> 
+            return SingleChildScrollView(
+              child: Html(
+                data: """<div class='impressum'><h1>Impressum</h1><p>Angaben gemäß § 5 TMG</p><p>Felix Ulonska <br> Humboldtstraße 32<br> 
 53115 Bonn<br> 
 </p><p> <strong>Vertreten durch: </strong><br>
 Felix Ulonska<br>
@@ -73,6 +74,7 @@ Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten d
 Impressum vom <a href="https://www.impressum-generator.de">Impressum Generator</a> der <a href="https://www.kanzlei-hasselbach.de/">Kanzlei Hasselbach, Rechtsanwälte für Arbeitsrecht und Familienrecht</a>
  </div>
  """,
+              ),
             );
           },
         ),
