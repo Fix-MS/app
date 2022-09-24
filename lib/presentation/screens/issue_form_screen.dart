@@ -163,7 +163,7 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                             minimumSize: const Size(0, 80),
                           ),
                           child: const Text(
-                            'Weiter',
+                            'Absenden',
                           ),
                         ),
                       ),

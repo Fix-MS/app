@@ -35,11 +35,18 @@ class IssueFormAddDescriptionState extends State<IssueFormAddDescription> {
               fontWeight: FontWeight.bold,
             ),
           ),
+          const SizedBox(
+            height: 8,
+          ),
           TextFormField(
             minLines: 6,
             maxLines: null,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               labelText: 'Anmerkungen',
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(),
+                borderRadius: BorderRadius.circular(15),
+              ),
             ),
             onChanged: (val) {
               description = val;

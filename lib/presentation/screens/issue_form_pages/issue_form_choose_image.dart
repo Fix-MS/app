@@ -35,32 +35,41 @@ class IssueFormChooseImageState extends State<IssueFormChooseImage> {
               fontWeight: FontWeight.bold,
             ),
           ),
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              ElevatedButton(
-                onPressed: () async {
-                  final result = await FilePicker.platform.pickFiles(
-                    type: FileType.image,
-                  );
-                  if (result != null) {
-                    setState(() {
-                      file = result.files.first;
-                      widget.saveImage(file);
-                    });
-                  }
-                },
-                child: const Text(
-                  'Wähle Foto',
+          Padding(
+            padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                ElevatedButton(
+                  onPressed: () async {
+                    final result = await FilePicker.platform.pickFiles(
+                      type: FileType.image,
+                      withData: true,
+                    );
+                    if (result != null) {
+                      setState(() {
+                        file = result.files.first;
+                        widget.saveImage(file);
+                      });
+                    }
+                  },
+                  child: const Text(
+                    'Wähle Foto',
+                  ),
                 ),
-              ),
-              const SizedBox(width: 8),
-              if (file != null)
-                Text(
-                  file!.name,
-                ),
-            ],
+                const SizedBox(width: 8),
+                if (file != null)
+                  Text(
+                    file!.name,
+                  ),
+              ],
+            ),
           ),
+          if (file != null)
+            ClipRRect(
+              borderRadius: BorderRadius.circular(16),
+              child: Image.memory(file!.bytes!),
+            ),
         ],
       ),
     );

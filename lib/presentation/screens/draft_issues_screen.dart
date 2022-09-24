@@ -2,8 +2,22 @@ import 'package:fix_ms/presentation/widgets/draft_issue_item.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
 import 'package:flutter/material.dart';
 
-class DraftIssuesScreen extends StatelessWidget {
+class DraftIssuesScreen extends StatefulWidget {
+
   const DraftIssuesScreen({super.key});
+
+  @override
+  State<DraftIssuesScreen> createState() => _DraftIssuesScreenState();
+}
+
+class _DraftIssuesScreenState extends State<DraftIssuesScreen> {
+  late final DateTime fakeTime;
+
+  @override
+  void initState() {
+    super.initState();
+    fakeTime = DateTime.now();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,25 +27,25 @@ class DraftIssuesScreen extends StatelessWidget {
       ),
       body: ListView(
         padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-        children: const [
+        children: [
           DraftIssueItem(
             device: 'BikeButton',
-            address: 'Hafenplatz 42',
-            time: '24.09.22 - 13:37 Uhr',
+            address: 'Promenade',
+            time: '24.09.22 - ${fakeTime.hour}:${fakeTime.minute} Uhr',
             category: 'Geh-/Radweg, Radverkehr',
             subCategory: 'starke Verschmutzung/Scherben',
           ),
-          DraftIssueItem(
+          const DraftIssueItem(
             device: 'WearOS',
-            address: 'Schlossalle 666',
-            time: '23.09.22 - 04:20 Uhr',
-            category: 'Geh-/Radweg, Radverkehr',
-            subCategory: 'starke Verschmutzung/Scherben',
+            address: 'Münzstraße 16',
+            time: '23.09.22 - 13:37 Uhr',
+            category: 'Beleuchtung',
+            subCategory: 'Leuchtenmast beschädigt',
           ),
-          DraftIssueItem(
+          const DraftIssueItem(
             device: 'BikeButton',
-            address: 'Siemensstr. 13',
-            time: '23.09.22 - 02:42 Uhr',
+            address: 'Hafenplatz 1',
+            time: '23.09.22 - 08:42 Uhr',
             category: 'Geh-/Radweg, Radverkehr',
             subCategory: 'starke Verschmutzung/Scherben',
           ),
