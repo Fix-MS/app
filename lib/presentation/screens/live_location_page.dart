@@ -63,44 +63,41 @@ class LiveLocationPageState extends State<LiveLocationPage> {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            Flexible(
-              child: FlutterMap(
-                mapController: _mapController,
-                options: MapOptions(
-                  center:
-                      LatLng(51.950637, 7.638475),
-                  zoom: 18,
-                  interactiveFlags: interActiveFlags,
-                ),
-                children: [
-                  TileLayer(
-                    urlTemplate:
-                        'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
-                    userAgentPackageName: 'dev.fleaflet.flutter_map.example',
-                  ),
-                  MarkerLayer(
-                    markers: [
-                      Marker(
-                        point: LatLng(51.950637, 7.638475),
-                        width: 160,
-                        height: 160,
-                        builder: (context) => const Icon(
-                          Icons.my_location,
-                          color: Colors.red,
-                        ),
-                      )
-                    ],
-                  ),
-                ],
-
+      body: Column(
+        children: [
+          Flexible(
+            child: FlutterMap(
+              mapController: _mapController,
+              options: MapOptions(
+                center:
+                    LatLng(51.950637, 7.638475),
+                zoom: 18,
+                interactiveFlags: interActiveFlags,
               ),
+              children: [
+                TileLayer(
+                  urlTemplate:
+                      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  userAgentPackageName: 'dev.fleaflet.flutter_map.example',
+                ),
+                MarkerLayer(
+                  markers: [
+                    Marker(
+                      point: LatLng(51.950637, 7.638475),
+                      width: 160,
+                      height: 160,
+                      builder: (context) => const Icon(
+                        Icons.my_location,
+                        color: Colors.red,
+                      ),
+                    )
+                  ],
+                ),
+              ],
+
             ),
-          ],
-        ),
+          ),
+        ],
       ),
       floatingActionButton: Builder(builder: (BuildContext context) {
         return FloatingActionButton(
