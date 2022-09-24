@@ -34,19 +34,20 @@ class SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: FixMSAppBar(
-          title: 'Einstellungen',
-          actions: [
-            Padding(
-              padding: const EdgeInsets.only(right: 8),
-              child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(Routes.home);
-                },
-                child: const Text('Überspringen',
-                    style: TextStyle(
-                      color: Colors.white,
-                    )),
+      appBar: FixMSAppBar(
+        title: 'Einstellungen',
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8),
+            child: TextButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(Routes.home);
+              },
+              child: const Text(
+                'Überspringen',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
               ),
             ),
           ],

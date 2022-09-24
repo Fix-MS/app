@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DisableScrollAnimation extends StatelessWidget {
   final Widget child;
 
-  DisableScrollAnimation({required this.child});
+  const DisableScrollAnimation({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {

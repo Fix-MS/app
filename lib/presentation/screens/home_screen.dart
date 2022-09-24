@@ -50,6 +50,14 @@ class HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.of(context).pushNamed(Routes.form);
+        },
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
     );
   }
 }
