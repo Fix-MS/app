@@ -18,13 +18,18 @@ class IssueFormChooseCategory extends StatefulWidget {
       IssueFormChooseCategoryState();
 }
 
-class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
+class IssueFormChooseCategoryState extends State<IssueFormChooseCategory>
+    with AutomaticKeepAliveClientMixin<IssueFormChooseCategory> {
   String? category = 'Geh-/Radweg, Radverkehr';
   String? subCategory = 'starke Verschmutzung/Scherben';
   int interActiveFlags = InteractiveFlag.all;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     widget.enableNext(category != null && subCategory != null);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,

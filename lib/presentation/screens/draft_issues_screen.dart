@@ -1,3 +1,4 @@
+import 'package:fix_ms/presentation/container/fix_ms_scaffold.dart';
 import 'package:fix_ms/presentation/widgets/draft_issue_item.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class _DraftIssuesScreenState extends State<DraftIssuesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FixMsScaffold(
+      maxWidth: FixMsScaffold.defaultMaxWidth,
       appBar: FixMSAppBar(
         title: 'Mängel',
       ),

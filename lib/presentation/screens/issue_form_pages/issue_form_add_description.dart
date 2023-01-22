@@ -15,11 +15,16 @@ class IssueFormAddDescription extends StatefulWidget {
       IssueFormAddDescriptionState();
 }
 
-class IssueFormAddDescriptionState extends State<IssueFormAddDescription> {
+class IssueFormAddDescriptionState extends State<IssueFormAddDescription>
+    with AutomaticKeepAliveClientMixin<IssueFormAddDescription> {
   String description = '';
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     widget.enableNext(true);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),

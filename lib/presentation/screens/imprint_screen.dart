@@ -1,4 +1,5 @@
 import 'package:fix_ms/models/saved_settings.dart';
+import 'package:fix_ms/presentation/container/fix_ms_scaffold.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
 import 'package:fix_ms/services/storage_service.dart';
 import 'package:flutter/material.dart';
@@ -32,9 +33,10 @@ class ImprintScreenState extends State<ImprintScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FixMsScaffold(
+      maxWidth: 1200,
       appBar: FixMSAppBar(
-        title: 'Impressum und Datenschutz',
+        title: 'Impressum',
       ),
       body: SafeArea(
         child: FutureBuilder(

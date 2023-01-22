@@ -15,11 +15,16 @@ class IssueFormChooseImage extends StatefulWidget {
   State<IssueFormChooseImage> createState() => IssueFormChooseImageState();
 }
 
-class IssueFormChooseImageState extends State<IssueFormChooseImage> {
+class IssueFormChooseImageState extends State<IssueFormChooseImage>
+    with AutomaticKeepAliveClientMixin<IssueFormChooseImage> {
   PlatformFile? file;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     widget.enableNext(true);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -59,16 +64,26 @@ class IssueFormChooseImageState extends State<IssueFormChooseImage> {
                 ),
                 const SizedBox(width: 8),
                 if (file != null)
-                  Text(
-                    file!.name,
+                  Expanded(
+                    child: Text(
+                      file!.name,
+                    ),
                   ),
               ],
             ),
           ),
           if (file != null)
-            ClipRRect(
-              borderRadius: BorderRadius.circular(16),
-              child: Image.memory(file!.bytes!),
+            Expanded(
+              child: Align(
+                alignment: Alignment.topCenter,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 16),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: Image.memory(file!.bytes!),
+                  ),
+                ),
+              ),
             ),
         ],
       ),
