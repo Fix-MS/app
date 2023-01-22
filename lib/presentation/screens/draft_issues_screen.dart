@@ -3,7 +3,6 @@ import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class DraftIssuesScreen extends StatefulWidget {
-
   const DraftIssuesScreen({super.key});
 
   @override
