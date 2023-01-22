@@ -13,8 +13,12 @@ class IssueFormAcceptTos extends StatefulWidget {
   State<IssueFormAcceptTos> createState() => IssueFormAcceptTosState();
 }
 
-class IssueFormAcceptTosState extends State<IssueFormAcceptTos> {
+class IssueFormAcceptTosState extends State<IssueFormAcceptTos>
+    with AutomaticKeepAliveClientMixin<IssueFormAcceptTos> {
   bool acceptTos = false;
+
+  @override
+  bool get wantKeepAlive => true;
 
   @override
   void initState() {
@@ -24,6 +28,7 @@ class IssueFormAcceptTosState extends State<IssueFormAcceptTos> {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(

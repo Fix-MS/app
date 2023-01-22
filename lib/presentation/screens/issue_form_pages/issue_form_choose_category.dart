@@ -18,13 +18,18 @@ class IssueFormChooseCategory extends StatefulWidget {
       IssueFormChooseCategoryState();
 }
 
-class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
+class IssueFormChooseCategoryState extends State<IssueFormChooseCategory>
+    with AutomaticKeepAliveClientMixin<IssueFormChooseCategory> {
   String? category = 'Geh-/Radweg, Radverkehr';
   String? subCategory = 'starke Verschmutzung/Scherben';
   int interActiveFlags = InteractiveFlag.all;
 
   @override
+  bool get wantKeepAlive => true;
+
+  @override
   Widget build(BuildContext context) {
+    super.build(context);
     widget.enableNext(category != null && subCategory != null);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,15 +38,13 @@ class IssueFormChooseCategoryState extends State<IssueFormChooseCategory> {
           height: 220,
           child: FlutterMap(
             options: MapOptions(
-              center:
-              LatLng(51.956789, 7.628728),
+              center: LatLng(51.956789, 7.628728),
               zoom: 18,
               interactiveFlags: interActiveFlags,
             ),
             children: [
               TileLayer(
-                urlTemplate:
-                'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                 userAgentPackageName: 'dev.fleaflet.flutter_map.example',
               ),
               MarkerLayer(

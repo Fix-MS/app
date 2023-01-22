@@ -1,4 +1,5 @@
 import 'package:fix_ms/models/issue_form_data.dart';
+import 'package:fix_ms/presentation/container/fix_ms_scaffold.dart';
 import 'package:fix_ms/presentation/screens/issue_form_pages/issue_form_accept_tos.dart';
 import 'package:fix_ms/presentation/screens/issue_form_pages/issue_form_add_description.dart';
 import 'package:fix_ms/presentation/screens/issue_form_pages/issue_form_choose_category.dart';
@@ -38,7 +39,9 @@ class IssueFormScreenState extends State<IssueFormScreen> {
       IssueFormChooseImage(
         enableNext: enableNext,
         saveImage: (image) {
-          formData.image = image;
+          setState(() {
+            formData.image = image;
+          });
         },
       ),
       IssueFormAddDescription(
@@ -55,7 +58,8 @@ class IssueFormScreenState extends State<IssueFormScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return FixMsScaffold(
+      maxWidth: FixMsScaffold.defaultMaxWidth,
       appBar: FixMSAppBar(
         title: 'Mängelmeldung',
       ),
@@ -123,7 +127,6 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                           style: ElevatedButton.styleFrom(
                             shadowColor: Colors.redAccent,
                             elevation: 3,
-
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),
@@ -146,17 +149,18 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                                     //    .loadSettings();
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content: Text('Erfolgreich abgeschickt!'),
+                                        content:
+                                            Text('Erfolgreich abgeschickt!'),
                                       ),
                                     );
-                                    Navigator.of(context).pushNamed(Routes.home);
+                                    Navigator.of(context)
+                                        .pushNamed(Routes.home);
                                   }
                                 }
                               : null,
                           style: ElevatedButton.styleFrom(
                             shadowColor: Colors.redAccent,
                             elevation: 3,
-  
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),

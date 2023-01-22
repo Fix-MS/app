@@ -1,4 +1,5 @@
 import 'package:fix_ms/presentation/widgets/current_location_layer.dart';
+import 'package:fix_ms/presentation/container/fix_ms_scaffold.dart';
 import 'package:fix_ms/presentation/widgets/fix_ms_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -28,10 +29,9 @@ class LiveLocationPageState extends State<LiveLocationPage> {
     _mapController = MapController();
   }
 
-    @override
+  @override
   Widget build(BuildContext context) {
-
-    return Scaffold(
+    return FixMsScaffold(
       appBar: FixMSAppBar(
         automaticallyImplyLeading: false,
         title: 'FixMS',
@@ -69,15 +69,13 @@ class LiveLocationPageState extends State<LiveLocationPage> {
             child: FlutterMap(
               mapController: _mapController,
               options: MapOptions(
-                center:
-                    LatLng(51.950637, 7.638475),
+                center: LatLng(51.950637, 7.638475),
                 zoom: 18,
                 interactiveFlags: interActiveFlags,
               ),
               children: [
                 TileLayer(
-                  urlTemplate:
-                      'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
+                  urlTemplate: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
                   userAgentPackageName: 'dev.fleaflet.flutter_map.example',
                 ),
                 MarkerLayer(
@@ -94,23 +92,20 @@ class LiveLocationPageState extends State<LiveLocationPage> {
                   ],
                 ),
               ],
-
             ),
           ),
         ],
       ),
-      floatingActionButton: Builder(builder: (BuildContext context) {
-        return FloatingActionButton(
-          onPressed: () {
-            setState(() {
-              Navigator.of(context).pushNamed(Routes.form);
-            });
-          },
-          child: const Icon(
-            Icons.add,
-          ),
-        );
-      }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            Navigator.of(context).pushNamed(Routes.form);
+          });
+        },
+        child: const Icon(
+          Icons.add,
+        ),
+      ),
     );
   }
 }
