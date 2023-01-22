@@ -123,7 +123,6 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                           style: ElevatedButton.styleFrom(
                             shadowColor: Colors.redAccent,
                             elevation: 3,
-
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),
@@ -146,17 +145,18 @@ class IssueFormScreenState extends State<IssueFormScreen> {
                                     //    .loadSettings();
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                        content: Text('Erfolgreich abgeschickt!'),
+                                        content:
+                                            Text('Erfolgreich abgeschickt!'),
                                       ),
                                     );
-                                    Navigator.of(context).pushNamed(Routes.home);
+                                    Navigator.of(context)
+                                        .pushNamed(Routes.home);
                                   }
                                 }
                               : null,
                           style: ElevatedButton.styleFrom(
                             shadowColor: Colors.redAccent,
                             elevation: 3,
-  
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(16.0),
                             ),

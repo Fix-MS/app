@@ -21,12 +21,13 @@ class FixMSApp extends StatelessWidget {
         primaryColor: const Color(0xFFDA121A),
         backgroundColor: const Color(0xFFfff9dd),
         scaffoldBackgroundColor: const Color(0xFFfff9dd),
-        textTheme: GoogleFonts.shareTechMonoTextTheme(Theme.of(context).textTheme.copyWith(
-              bodyMedium: const TextStyle(
-                color: Color(0xFF160d29),
-                fontSize: 16,
+        textTheme: GoogleFonts.shareTechMonoTextTheme(
+          Theme.of(context).textTheme.copyWith(
+                bodyMedium: const TextStyle(
+                  color: Color(0xFF160d29),
+                  fontSize: 16,
+                ),
               ),
-            ),
         ),
       ),
       initialRoute: Routes.onboarding,
